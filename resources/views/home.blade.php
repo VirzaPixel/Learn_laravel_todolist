@@ -62,9 +62,9 @@
                                     <button class="btn btn-warning">Edit</button>
 
                                     @if ($activity->status == 'pending')
-                                        <button class="btn btn-success">Check</button>
+                                        <a href="{{ route('activities.toggleCheck', $activity->id) }}" class="btn btn-success">Check</a>
                                     @else
-                                        <button class="btn btn-secondary">Un-Check</button>
+                                        <a href="{{ route('activities.toggleCheck', $activity->id) }}" class="btn btn-secondary">Un-Check</a>
                                     @endif
 
                                 </div>
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>

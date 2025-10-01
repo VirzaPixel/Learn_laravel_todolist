@@ -84,4 +84,17 @@ class ActivityController extends Controller
     {
         //
     }
+
+    public function toggleCheck($id) {
+        $activity = Activity::find($id);
+
+        if ($activity->status == 'pending') {
+            $activity->update(['status' => 'completed']);
+        }
+        else {
+            $activity->update(['status' => 'pending']);
+        }
+
+        return redirect()->back();
+    }
 }
