@@ -74,7 +74,13 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        //
+        $activity->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'when' => $request->when,
+        ]);
+
+        return redirect()->back()->with('status', "{$activity->name} has been updated!");
     }
 
     /**
@@ -82,7 +88,9 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity)
     {
-        //
+        $activity->delete();
+
+        return redirect()->back()->with('status', "{$activity->name} has been deleted!");
     }
 
     public function toggleCheck($id) {
@@ -95,6 +103,8 @@ class ActivityController extends Controller
             $activity->update(['status' => 'pending']);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('status', "{$activity->name} is now {$activity->status}!");
+
+
     }
 }
